@@ -1,34 +1,49 @@
 const express = require('express')
 const app = express()
 
+let id;
+let Name; 
+let LastName;
+let Age;
+
+app.use(express.json());
+
+app.post('/', function(request, response){
+  id = request.body.id
+  Name = request.body.name
+  LastName = request.body.lastName
+  Age = request.body.old
+  console.log(request.body);      // your JSON
+   response.send(Name);    // echo the result back
+});
+
 app.get('/', function (req, res) {
   res.send('Hello World')
 })
 
+app.get('/id', function (req, res) {
+  res.send(id);
+  console.log(id);
+})
 
-app.get('/spanish', function (req, res) {
-  res.send('Hola Mundo')
+app.get('/Name', function (req, res) {
+  res.send(Name);
+  console.log(Name);
 })
 
 
-app.get('/frances', function (req, res) {
-    res.send('Salut Monde')
-  })
+app.get('/LastName', function (req, res) {
+  res.send(LastName);
+  console.log(LastName);
+})
 
-
-app.get('/griego', function (req, res) {
-    res.send('Γειά σου Κόσμε')
-  })
-
-
-  app.get('/sueco', function (req, res) {
-    res.send('Hej världen')
-  })
-
-
-  app.get('/turco', function (req, res) {
-    res.send('Selam Dünya')
-  })
-
+app.get('/Age', function (req, res) {
+  res.send(Age);
+  console.log(Age);
+})
   
+
+
 app.listen(3000)
+
+
